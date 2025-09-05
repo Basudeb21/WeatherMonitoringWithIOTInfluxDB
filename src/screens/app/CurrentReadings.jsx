@@ -32,11 +32,12 @@ const CurrentReadings = () => {
         try {
             const date = new Date(utcTimeString);
             const istTime = new Date(date.getTime() + (5 * 60 + 30) * 60 * 1000);
-            return istTime.toLocaleTimeString('en-IN', {
+            return new Date().toLocaleTimeString('en-IN', {
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit',
-                hour12: false
+                hour12: false,
+                timeZone: 'Asia/Kolkata'
             });
         } catch (error) {
             return 'Invalid time';
@@ -124,33 +125,33 @@ const CurrentReadings = () => {
             iconColor: '#FF6B6B',
             refreshing: refreshingCards.temperature
         },
-        {
-            id: '2',
-            head: 'Pressure',
-            data: weatherData.pressure ? `${weatherData.pressure.value} hPa` : '-- hPa',
-            updatedAt: weatherData.pressure ? formatTimeToIST(weatherData.pressure.time) : 'Loading...',
-            icon: 'speedometer-outline',
-            iconColor: '#4ECDC4',
-            refreshing: refreshingCards.pressure
-        },
-        {
-            id: '3',
-            head: 'Altitude',
-            data: weatherData.altitude ? `${weatherData.altitude.value} m` : '-- m',
-            updatedAt: weatherData.altitude ? formatTimeToIST(weatherData.altitude.time) : 'Loading...',
-            icon: 'arrow-up-outline',
-            iconColor: '#45B7D1',
-            refreshing: refreshingCards.altitude
-        },
-        {
-            id: '4',
-            head: 'Rain',
-            data: weatherData.rain ? `${weatherData.rain.value} mm` : '-- mm',
-            updatedAt: weatherData.rain ? formatTimeToIST(weatherData.rain.time) : 'Loading...',
-            icon: 'rainy-outline',
-            iconColor: '#5D5FEF',
-            refreshing: refreshingCards.rain
-        },
+        // {
+        //     id: '2',
+        //     head: 'Pressure',
+        //     data: weatherData.pressure ? `${weatherData.pressure.value} hPa` : '-- hPa',
+        //     updatedAt: weatherData.pressure ? formatTimeToIST(weatherData.pressure.time) : 'Loading...',
+        //     icon: 'speedometer-outline',
+        //     iconColor: '#4ECDC4',
+        //     refreshing: refreshingCards.pressure
+        // },
+        // {
+        //     id: '3',
+        //     head: 'Altitude',
+        //     data: weatherData.altitude ? `${weatherData.altitude.value} m` : '-- m',
+        //     updatedAt: weatherData.altitude ? formatTimeToIST(weatherData.altitude.time) : 'Loading...',
+        //     icon: 'arrow-up-outline',
+        //     iconColor: '#45B7D1',
+        //     refreshing: refreshingCards.altitude
+        // },
+        // {
+        //     id: '4',
+        //     head: 'Rain',
+        //     data: weatherData.rain ? `${weatherData.rain.value} mm` : '-- mm',
+        //     updatedAt: weatherData.rain ? formatTimeToIST(weatherData.rain.time) : 'Loading...',
+        //     icon: 'rainy-outline',
+        //     iconColor: '#5D5FEF',
+        //     refreshing: refreshingCards.rain
+        // },
         {
             id: '5',
             head: 'Humidity',

@@ -7,9 +7,9 @@ const ReadingCard = ({ head, data, updatedAt, icon, iconColor, onPress, refreshi
 
     const cardConfig = {
         Temperature: { color: '#FF7043', icon: 'thermometer-outline' },
-        Pressure: { color: '#42A5F5', icon: 'speedometer-outline' },
-        Altitude: { color: '#66BB6A', icon: 'trending-up-outline' },
-        Rain: { color: '#26C6DA', icon: 'rainy-outline' },
+        // Pressure: { color: '#42A5F5', icon: 'speedometer-outline' },
+        // Altitude: { color: '#66BB6A', icon: 'trending-up-outline' },
+        // Rain: { color: '#26C6DA', icon: 'rainy-outline' },
         Humidity: { color: '#4F8DF9', icon: 'water-outline' },
     };
 

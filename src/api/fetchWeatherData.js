@@ -7,7 +7,7 @@ export async function fetchWeatherData(fieldName) {
     console.log(`Fetching ${fieldName} data...`);
 
     const fluxQuery = `from(bucket: "TEMP_HUM")
-  |> range(start: -1d)
+  |> range(start: -1h)
   |> filter(fn: (r) => r["_measurement"] == "weather")
   |> filter(fn: (r) => r["_field"] == "${fieldName}")
   |> last()`;
