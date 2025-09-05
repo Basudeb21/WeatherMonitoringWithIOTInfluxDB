@@ -1,14 +1,14 @@
 import axios from "axios";
 
 const INFLUX_URL = "https://us-east-1-1.aws.cloud2.influxdata.com/api/v2/query?orgID=bffac43ed4d006d6";
-const TOKEN = "FZs2ly9wGBzLXIL1zj-ZAExYNpYzqm6WZywgPTxxB-mWeP1hBj7O_lYaxhF6pXBU31NbOJlRfHsPLbtDUtouwA==";
+const TOKEN = "FZs2ly9wGBzLXIL1zj-ZAExYNpYzqm6WZywgPTxxB-mWeP1hBj7O_lYaxhF6pXBU31NbOJlRfHsPLbtDUtouwA==                                ";
 
 export async function fetchWeatherData(fieldName) {
     console.log(`Fetching ${fieldName} data...`);
 
     const fluxQuery = `from(bucket: "TEMP_HUM")
   |> range(start: -1d)
-  |> filter(fn: (r) => r["_measurement"] == "mqtt_consumer")
+  |> filter(fn: (r) => r["_measurement"] == "weather")
   |> filter(fn: (r) => r["_field"] == "${fieldName}")
   |> last()`;
 
@@ -35,6 +35,7 @@ export async function fetchWeatherData(fieldName) {
             return null;
         }
 
+        console.log(`Raw response for ${fieldName}:`, res.data.substring(0, 100) + '...');
 
         const lines = res.data.trim().split("\n");
 
@@ -50,6 +51,7 @@ export async function fetchWeatherData(fieldName) {
                         field: cols[7]?.trim(),
                         measurement: cols[8]?.trim()
                     };
+                    console.log(`Parsed ${fieldName} data:`, result);
                     return result;
                 }
             }
